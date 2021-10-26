@@ -35,7 +35,7 @@ contract CourseTokenV1 {
   mapping(address => uint256)  balances;
 
   // 3. Constructor sets the initial supply as total available
-  constructor(uint256 initSupply) {
+  constructor(uint256 initSupply) public {
     // constructor
 
     // Set the initial supply
@@ -47,7 +47,7 @@ contract CourseTokenV1 {
   }
 
   // 5. transfer
-  function transfer(address _to, uint256 _value) returns (bool success) {
+  function transfer(address _to, uint256 _value) public returns (bool success) {
     // Return false if specified value is less than the balance available
     if(_value > 0  && balances[msg.sender] < _value) {
       return false;
@@ -60,20 +60,20 @@ contract CourseTokenV1 {
     balances[_to] += _value;
 
     // Declare & Emit the transfer event
-    Transfer(msg.sender, _to, _value);
+    emit Transfer(msg.sender, _to, _value);
 
     return true;
   }
 
   // 7. balanceOf
   // Anyone can call this constant function to check the balance of tokens for an address
-  function balanceOf(address _someone) view returns (uint256 balance){
+  function balanceOf(address _someone) public view returns (uint256 balance)  {
     return balances[_someone];
   }
 
   // Fallback function
   // Do not accept ethers
-  function() {
+  function() external {
     // This will throw an exception - in effect no one can purchase the coin
     assert(true == false);
   }

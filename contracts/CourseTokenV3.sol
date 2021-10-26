@@ -11,18 +11,18 @@ import './CourseTokenV2.sol';
 // Implement the administrative functions
 contract CourseTokenV3 is CourseTokenV2 {
 
-  constructor(uint256 initSupply) CourseTokenV2(initSupply) {
+  constructor(uint256 initSupply) CourseTokenV2(initSupply) public {
     // constructor
     // Feel free to change the constructor
   }
 
-  function increaseSupply(uint additional) returns (bool success) {
+  function increaseSupply(uint additional) public returns (bool success) {
     // 1. Only owner can take this action
     // 2. Caller gets the ownership of additional coins
     return true;
   }
 
-  function decreaseSupply(uint additional) returns (bool success) {
+  function decreaseSupply(uint additional) public returns (bool success) {
     // 1. Only owner can take this action
     // 2. Caller's token are taken for removal
     // 3. What happens when caller does not have sufficient balance?
