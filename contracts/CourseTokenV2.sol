@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity >0.4.99 <0.6.0;
 
 import './CourseTokenV1.sol';
 // V2 - inherits from V1
@@ -13,13 +13,13 @@ contract CourseTokenV2 is CourseTokenV1 {
 
   event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
-  function CourseTokenV2(uint256 initSupply) CourseTokenV1(initSupply) {
+  constructor(uint256 initSupply) CourseTokenV1(initSupply) {
     // constructor
     // we have invoked the constructor for the V1, so we are good
   }
 
   // How many tokens can spender spend from owner's account
-  function allowance(address _owner, address _spender) constant returns (uint remaining){
+  function allowance(address _owner, address _spender) view returns (uint remaining){
     //1. Declare a mapping to manage allowances
     //2. Return the allowance for _spender approved by _owner
     return allowances[_owner][_spender];

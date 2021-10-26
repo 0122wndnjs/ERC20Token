@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity >0.4.99 <0.6.0;
 
 import './CourseTokenV2.sol';
 // V3 - inherits from V2
@@ -11,7 +11,7 @@ import './CourseTokenV2.sol';
 // Implement the administrative functions
 contract CourseTokenV3 is CourseTokenV2 {
 
-  function CourseTokenV3(uint256 initSupply) CourseTokenV2(initSupply) {
+  constructor(uint256 initSupply) CourseTokenV2(initSupply) {
     // constructor
     // Feel free to change the constructor
   }

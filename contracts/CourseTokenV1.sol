@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity >0.4.99 <0.6.0;
 
 /**
  * Part of the Ethereum DAPPs design and development course
@@ -35,7 +35,7 @@ contract CourseTokenV1 {
   mapping(address => uint256)  balances;
 
   // 3. Constructor sets the initial supply as total available
-  function CourseTokenV1(uint256 initSupply) {
+  constructor(uint256 initSupply) {
     // constructor
 
     // Set the initial supply
@@ -67,7 +67,7 @@ contract CourseTokenV1 {
 
   // 7. balanceOf
   // Anyone can call this constant function to check the balance of tokens for an address
-  function balanceOf(address _someone) constant returns (uint256 balance){
+  function balanceOf(address _someone) view returns (uint256 balance){
     return balances[_someone];
   }
 

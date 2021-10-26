@@ -1,6 +1,6 @@
 // Abstract contract for the full ERC 20 Token standard
 // https://github.com/ethereum/EIPs/issues/20
-pragma solidity ^0.4.8;
+pragma solidity >0.4.99 <0.6.0;
 
 contract ERC20Specification {
 
@@ -23,7 +23,7 @@ contract ERC20Specification {
     /// returns balance of the _owner
     /// @param _owner The address from which the balance will be retrieved
     /// @return The balance
-    function balanceOf(address _owner) constant returns (uint256 balance);
+    function balanceOf(address _owner) view returns (uint256 balance);
 
     /// transfers specified number of tokens from=msg.sender to=_to
     /// @notice send `_value` token to `_to` from `msg.sender`
@@ -51,7 +51,7 @@ contract ERC20Specification {
     /// @param _owner The address of the account owning tokens
     /// @param _spender The address of the account able to transfer the tokens
     /// @return Amount of remaining tokens allowed to spent
-    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    function allowance(address _owner, address _spender) view returns (uint256 remaining);
 
     /// emit the events for transfer and transferFrom
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
